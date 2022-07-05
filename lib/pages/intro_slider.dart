@@ -24,6 +24,8 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
           child: OnBoard(
             onBoardData: IntroSliderModel.onBoardData,
             pageController: _pageController,
+            imageHeight: 150,
+            imageWidth: 150,
             skipButton: Container(),
             titleStyles: const TextStyle(
               color: Colors.black,

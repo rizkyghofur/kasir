@@ -101,9 +101,9 @@ class _TambahMenuPageState extends State<TambahMenuPage> {
                       height: 25,
                     ),
                     const Text(
-                      'Pilih kategori yang ingin ditambahkan ke dalam menu',
+                      'Pilih kategori yang ingin\nditambahkan ke dalam menu',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 28),
+                      style: TextStyle(fontSize: 34),
                     ),
                     const Spacer(),
                     Image.asset(

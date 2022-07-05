@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kasir/constants/constants.dart';
-import 'package:kasir/widgets/add_menu_widget.dart';
 import 'package:kasir/widgets/bottompagewidget.dart';
+import 'package:kasir/widgets/custom_textformfield.dart';
 
 class TambahMenuMakananPage extends StatefulWidget {
   const TambahMenuMakananPage({Key? key}) : super(key: key);
@@ -42,51 +42,130 @@ class _TambahMenuMakananPageState extends State<TambahMenuMakananPage> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          color: const Color(Constants.mainColor),
-          child: Column(
-            children: [
-              Expanded(
-                flex: 6,
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 80,
-                    ),
-                    AddMenuWidget(onPressed: () {}, text: 'Makanan'),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    AddMenuWidget(onPressed: () {}, text: 'Minuman'),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    AddMenuWidget(onPressed: () {}, text: 'Dessert'),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    const Text(
-                      'Pilih kategori yang ingin ditambahkan ke dalam menu',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 28),
-                    ),
-                    const Spacer(),
-                    Image.asset(
-                      'assets/images/6.jpg',
-                      width: 350,
-                      height: 175,
-                      fit: BoxFit.fill,
-                    )
-                  ],
+        child: SingleChildScrollView(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.9055,
+            color: const Color(Constants.mainColor),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      const Text(
+                        "Nama Makanan",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const CustomTextFormField(
+                        keyboardType: TextInputType.text,
+                        hintText: "Masukkan nama makanan",
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      const Text(
+                        "Harga",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const CustomTextFormField(
+                        keyboardType: TextInputType.number,
+                        hintText: "Masukkan harga",
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "Gambar",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 32,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                    const Color(Constants.secondColor),
+                                  ),
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.black),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {},
+                                child: const Text(
+                                  'Upload File',
+                                  style: TextStyle(
+                                    fontSize: 32,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            height: 275,
+                            width: 275,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 7.5,
+                                color: const Color(Constants.secondColor),
+                              ),
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(15.0),
+                              ),
+                            ),
+                            child: const Icon(
+                              Icons.camera_enhance,
+                              size: 75,
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              BottomPageWidget(
-                onPressed: () {},
-                text: 'Selanjutnya',
-              )
-            ],
+                const Spacer(),
+                BottomPageWidget(
+                  onPressed: () {},
+                  text: 'Simpan',
+                )
+              ],
+            ),
           ),
         ),
       ),

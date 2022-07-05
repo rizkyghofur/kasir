@@ -23,7 +23,7 @@ class ButtonMenu extends StatelessWidget {
         foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
       ),
       child: Center(
-        child: Container(
+        child: SizedBox(
           width: 90,
           height: 90,
           child: Column(

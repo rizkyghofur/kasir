@@ -57,7 +57,10 @@ class _BerandaPageState extends State<BerandaPage> {
                       children: [
                         ButtonMenu(
                           title: 'Makanan',
-                          icon: const Icon(Icons.restaurant, size: 30),
+                          icon: const Icon(
+                            Icons.restaurant,
+                            size: 36,
+                          ),
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -71,7 +74,7 @@ class _BerandaPageState extends State<BerandaPage> {
                           title: 'Minuman',
                           icon: const Icon(
                             Icons.local_drink,
-                            size: 30,
+                            size: 36,
                           ),
                           onPressed: () {
                             Navigator.push(
@@ -86,7 +89,7 @@ class _BerandaPageState extends State<BerandaPage> {
                           title: 'Dessert',
                           icon: const Icon(
                             Icons.cake,
-                            size: 30,
+                            size: 36,
                           ),
                           onPressed: () {
                             Navigator.push(
@@ -103,9 +106,9 @@ class _BerandaPageState extends State<BerandaPage> {
                       height: 40,
                     ),
                     const Text(
-                      'Pilih kategori transaksi untuk dipesan',
+                      'Pilih kategori transaksi untuk\ndipesan',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 28),
+                      style: TextStyle(fontSize: 34),
                     ),
                     const Spacer(),
                     Image.asset(
