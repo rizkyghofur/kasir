@@ -37,9 +37,11 @@ dependencies:
   flutter_onboard: ^2.0.0
   flutter_native_splash: ^2.2.4
   shared_preferences: ^2.0.15
+  flutter_launcher_icons: ^0.9.3
+  get_it: ^7.2.0
 
 flutter_native_splash:
-  color: "#c9e165"
+  color: "#f6e6c4"
   image: assets/images/kasir.png
   android: true
   ios: true

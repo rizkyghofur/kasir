@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasir/constants/constants.dart';
+import 'package:kasir/widgets/bottompagewidget.dart';
 
 class DessertPage extends StatefulWidget {
   const DessertPage({Key? key}) : super(key: key);
@@ -13,6 +14,13 @@ class _DessertPageState extends State<DessertPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
         backgroundColor: const Color(
           Constants.secondColor,
         ),
@@ -24,9 +32,10 @@ class _DessertPageState extends State<DessertPage> {
           )
         ],
         title: const Text(
-          "Beranda",
+          "Dessert",
           style: TextStyle(
             color: Colors.black,
+            fontSize: 40,
           ),
         ),
         centerTitle: true,
@@ -37,7 +46,13 @@ class _DessertPageState extends State<DessertPage> {
           height: MediaQuery.of(context).size.height,
           color: const Color(Constants.mainColor),
           child: Column(
-            children: const [],
+            children: [
+              Expanded(
+                flex: 6,
+                child: Container(),
+              ),
+              BottomPageWidget(onPressed: (){}, text: 'Keranjang')
+            ],
           ),
         ),
       ),

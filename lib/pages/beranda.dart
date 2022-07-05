@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kasir/constants/constants.dart';
+import 'package:kasir/pages/dessert.dart';
+import 'package:kasir/pages/makanan.dart';
+import 'package:kasir/pages/minuman.dart';
+import 'package:kasir/pages/tambah_menu.dart';
+import 'package:kasir/widgets/bottompagewidget.dart';
+import 'package:kasir/widgets/button_menu.dart';
 
 class BerandaPage extends StatefulWidget {
   const BerandaPage({Key? key}) : super(key: key);
@@ -41,37 +47,86 @@ class _BerandaPageState extends State<BerandaPage> {
             children: [
               Expanded(
                 flex: 6,
-                child: Container(),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 100,
-                color: const Color(Constants.secondColor),
-                child: Center(
-                  child: SizedBox(
-                    width: 225,
-                    height: 60,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.black),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                        ),
-                      ),
-                      child: const Text(
-                        'Selanjutnya',
-                        style: TextStyle(color: Colors.black, fontSize: 48),
-                      ),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 100,
                     ),
-                  ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ButtonMenu(
+                          title: 'Makanan',
+                          icon: const Icon(Icons.restaurant, size: 30),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const MakananPage(),
+                              ),
+                            );
+                          },
+                        ),
+                        ButtonMenu(
+                          title: 'Minuman',
+                          icon: const Icon(
+                            Icons.local_drink,
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const MinumanPage(),
+                              ),
+                            );
+                          },
+                        ),
+                        ButtonMenu(
+                          title: 'Dessert',
+                          icon: const Icon(
+                            Icons.cake,
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const DessertPage(),
+                              ),
+                            );
+                          },
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    const Text(
+                      'Pilih kategori transaksi untuk dipesan',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 28),
+                    ),
+                    const Spacer(),
+                    Image.asset(
+                      'assets/images/pict_menu.png',
+                      width: 300,
+                      height: 250,
+                      fit: BoxFit.fill,
+                    )
+                  ],
                 ),
+              ),
+              BottomPageWidget(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TambahMenuPage(),
+                    ),
+                  );
+                },
+                text: 'Tambah',
               )
             ],
           ),
