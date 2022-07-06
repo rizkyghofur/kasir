@@ -6,6 +6,7 @@ class PreferencesUtil {
   static const String userId = "userId";
   static const String name = "name";
   static const String role = "role";
+  static const String pass = "pass";
 
   static Future<PreferencesUtil?> getInstance() async {
     manager ??= PreferencesUtil();

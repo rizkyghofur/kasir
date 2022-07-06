@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kasir/constants/constants.dart';
+import 'package:kasir/pages/keranjang.dart';
 import 'package:kasir/widgets/bottompagewidget.dart';
+import 'package:kasir/widgets/counter_widget.dart';
 
 class MakananPage extends StatefulWidget {
   const MakananPage({Key? key}) : super(key: key);
@@ -26,7 +28,14 @@ class _MakananPageState extends State<MakananPage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const KeranjangPage(),
+                ),
+              );
+            },
             icon: const Icon(Icons.shopping_cart),
             color: Colors.black,
           )
@@ -49,9 +58,39 @@ class _MakananPageState extends State<MakananPage> {
             children: [
               Expanded(
                 flex: 6,
-                child: Container(),
+                child: ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: const [
+                          Text(
+                            'Add',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 32,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          CounterWidget()
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
-              BottomPageWidget(onPressed: (){}, text: 'Keranjang')
+              BottomPageWidget(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const KeranjangPage(),
+                      ),
+                    );
+                  },
+                  text: 'Keranjang')
             ],
           ),
         ),

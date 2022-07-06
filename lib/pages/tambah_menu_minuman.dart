@@ -1,5 +1,8 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:kasir/constants/constants.dart';
+import 'package:kasir/pages/selesai_tambah_menu.dart';
 import 'package:kasir/widgets/bottompagewidget.dart';
 import 'package:kasir/widgets/custom_textformfield.dart';
 
@@ -11,6 +14,55 @@ class TambahMenuMinumanPage extends StatefulWidget {
 }
 
 class _TambahMenuMinumanPageState extends State<TambahMenuMinumanPage> {
+  final ImagePicker _picker = ImagePicker();
+  File? imageFile;
+  SimpleDialog? sd;
+
+  void dialog() {
+    sd = SimpleDialog(
+      title: const Text(
+        'Pilih salah satu',
+        style: TextStyle(fontSize: 32),
+      ),
+      children: <Widget>[
+        SimpleDialogOption(
+          child: const Text(
+            'Kamera',
+            style: TextStyle(fontSize: 32),
+          ),
+          onPressed: () async {
+            Navigator.of(context).pop();
+            XFile? file = await _picker.pickImage(source: ImageSource.camera);
+            setState(() {
+              imageFile = File(file!.path);
+            });
+          },
+        ),
+        SimpleDialogOption(
+          child: const Text(
+            'Galeri',
+            style: TextStyle(fontSize: 32),
+          ),
+          onPressed: () async {
+            Navigator.of(context).pop();
+            XFile? file = await _picker.pickImage(source: ImageSource.gallery);
+            setState(() {
+              imageFile = File(file!.path);
+            });
+          },
+        ),
+      ],
+    );
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Container(
+          child: sd,
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +77,6 @@ class _TambahMenuMinumanPageState extends State<TambahMenuMinumanPage> {
         backgroundColor: const Color(
           Constants.secondColor,
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.shopping_cart),
-            color: Colors.black,
-          )
-        ],
         title: const Text(
           "Tambah Menu",
           style: TextStyle(
@@ -127,7 +172,9 @@ class _TambahMenuMinumanPageState extends State<TambahMenuMinumanPage> {
                                     ),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () async {
+                                  dialog();
+                                },
                                 child: const Text(
                                   'Upload File',
                                   style: TextStyle(
@@ -149,10 +196,15 @@ class _TambahMenuMinumanPageState extends State<TambahMenuMinumanPage> {
                                 Radius.circular(15.0),
                               ),
                             ),
-                            child: const Icon(
-                              Icons.camera_enhance,
-                              size: 75,
-                            ),
+                            child: imageFile == null
+                                ? const Icon(
+                                    Icons.camera_enhance,
+                                    size: 75,
+                                  )
+                                : Image.file(
+                                    imageFile!,
+                                    fit: BoxFit.fill,
+                                  ),
                           )
                         ],
                       ),
@@ -161,7 +213,14 @@ class _TambahMenuMinumanPageState extends State<TambahMenuMinumanPage> {
                 ),
                 const Spacer(),
                 BottomPageWidget(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SelesaiTambahMenu(),
+                      ),
+                    );
+                  },
                   text: 'Simpan',
                 )
               ],

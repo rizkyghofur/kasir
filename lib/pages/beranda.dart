@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kasir/constants/constants.dart';
 import 'package:kasir/pages/dessert.dart';
+import 'package:kasir/pages/keranjang.dart';
 import 'package:kasir/pages/makanan.dart';
 import 'package:kasir/pages/minuman.dart';
 import 'package:kasir/pages/tambah_menu.dart';
@@ -24,7 +25,14 @@ class _BerandaPageState extends State<BerandaPage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const KeranjangPage(),
+                ),
+              );
+            },
             icon: const Icon(Icons.shopping_cart),
             color: Colors.black,
           )
@@ -108,7 +116,7 @@ class _BerandaPageState extends State<BerandaPage> {
                     const Text(
                       'Pilih kategori transaksi untuk\ndipesan',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 34),
+                      style: TextStyle(fontSize: 42),
                     ),
                     const Spacer(),
                     Image.asset(

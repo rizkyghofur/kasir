@@ -28,13 +28,6 @@ class _TambahMenuPageState extends State<TambahMenuPage> {
         backgroundColor: const Color(
           Constants.secondColor,
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.shopping_cart),
-            color: Colors.black,
-          )
-        ],
         title: const Text(
           "Tambah Menu",
           style: TextStyle(
@@ -45,81 +38,83 @@ class _TambahMenuPageState extends State<TambahMenuPage> {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          color: const Color(Constants.mainColor),
-          child: Column(
-            children: [
-              Expanded(
-                flex: 6,
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 80,
-                    ),
-                    AddMenuWidget(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const TambahMenuMakananPage(),
-                          ),
-                        );
-                      },
-                      text: 'Makanan',
-                    ),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    AddMenuWidget(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const TambahMenuMinumanPage(),
-                          ),
-                        );
-                      },
-                      text: 'Minuman',
-                    ),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    AddMenuWidget(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const TambahMenuDessertPage(),
-                          ),
-                        );
-                      },
-                      text: 'Dessert',
-                    ),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    const Text(
-                      'Pilih kategori yang ingin\nditambahkan ke dalam menu',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 34),
-                    ),
-                    const Spacer(),
-                    Image.asset(
-                      'assets/images/6.jpg',
-                      width: 350,
-                      height: 175,
-                      fit: BoxFit.fill,
-                    )
-                  ],
+        child: SingleChildScrollView(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.9055,
+            color: const Color(Constants.mainColor),
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 6,
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 80,
+                      ),
+                      AddMenuWidget(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TambahMenuMakananPage(),
+                            ),
+                          );
+                        },
+                        text: 'Makanan',
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      AddMenuWidget(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TambahMenuMinumanPage(),
+                            ),
+                          );
+                        },
+                        text: 'Minuman',
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      AddMenuWidget(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TambahMenuDessertPage(),
+                            ),
+                          );
+                        },
+                        text: 'Dessert',
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      const Text(
+                        'Pilih kategori yang ingin\nditambahkan ke dalam menu',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 34),
+                      ),
+                      const Spacer(),
+                      Image.asset(
+                        'assets/images/6.jpg',
+                        width: 350,
+                        height: 175,
+                        fit: BoxFit.fill,
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              BottomPageWidget(
-                onPressed: () {},
-                text: 'Selanjutnya',
-              )
-            ],
+                BottomPageWidget(
+                  onPressed: () {},
+                  text: 'Selanjutnya',
+                )
+              ],
+            ),
           ),
         ),
       ),

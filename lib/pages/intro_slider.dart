@@ -3,6 +3,7 @@ import 'package:flutter_onboard/flutter_onboard.dart';
 import 'package:kasir/constants/constants.dart';
 import 'package:kasir/models/intro_slider_model.dart';
 import 'package:kasir/pages/beranda.dart';
+import 'package:kasir/utils/preferences_util.dart';
 
 class IntroSliderPage extends StatefulWidget {
   const IntroSliderPage({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class IntroSliderPage extends StatefulWidget {
 
 class _IntroSliderPageState extends State<IntroSliderPage> {
   final PageController _pageController = PageController();
+  PreferencesUtil util = PreferencesUtil();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +40,7 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
             ),
             nextButton: ElevatedButton(
               onPressed: () {
+                util.putString(PreferencesUtil.pass, "pass");
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
