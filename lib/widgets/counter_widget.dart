@@ -4,10 +4,10 @@ class CounterWidget extends StatefulWidget {
   const CounterWidget({Key? key}) : super(key: key);
 
   @override
-  _CounterWidgetState createState() => _CounterWidgetState();
+  CounterWidgetState createState() => CounterWidgetState();
 }
 
-class _CounterWidgetState extends State<CounterWidget> {
+class CounterWidgetState extends State<CounterWidget> {
   int counter = 0;
 
   @override
